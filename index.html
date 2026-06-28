@@ -6,41 +6,76 @@
 <title>Kolonilotten – Linköping</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f7fa; color: #1a1a1a; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f7fa; color: #1a1a1a; display: flex; min-height: 100vh; }
 
-  header {
+  nav {
+    width: 220px;
+    min-width: 220px;
     background: #0C447C;
     color: #fff;
-    padding: 2rem 2rem 1.5rem;
-    text-align: center;
-  }
-  header h1 { font-size: 2rem; font-weight: 500; }
-  header p { font-size: 1rem; opacity: 0.8; margin-top: 6px; }
-
-  .intro {
-    max-width: 700px;
-    margin: 2.5rem auto 0;
-    padding: 0 1.5rem;
-    text-align: center;
-    color: #555;
-    font-size: 1rem;
-    line-height: 1.7;
+    padding: 2rem 0;
+    min-height: 100vh;
   }
 
-  .projects {
-    max-width: 900px;
-    margin: 2.5rem auto 3rem;
-    padding: 0 1.5rem;
+  .nav-logo {
+    padding: 0 1.25rem 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    margin-bottom: 1rem;
+  }
+  .nav-logo h1 { font-size: 1.2rem; font-weight: 500; }
+  .nav-logo p { font-size: 0.8rem; opacity: 0.65; margin-top: 3px; }
+
+  .nav-section {
+    padding: 0.5rem 1.25rem 0.25rem;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.5;
+  }
+
+  .nav-item {
+    display: block;
+    padding: 0.6rem 1.25rem;
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: background 0.15s, color 0.15s;
+    border-left: 3px solid transparent;
+  }
+  .nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    border-left-color: rgba(255,255,255,0.5);
+  }
+  .nav-item.active {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    border-left-color: #fff;
+  }
+  .nav-item .icon { margin-right: 8px; }
+  .nav-item.disabled { opacity: 0.4; cursor: default; pointer-events: none; }
+
+  main {
+    flex: 1;
+    padding: 2.5rem 2rem;
+  }
+
+  .welcome h2 { font-size: 1.6rem; font-weight: 500; margin-bottom: 0.75rem; }
+  .welcome p { color: #555; line-height: 1.7; max-width: 600px; }
+
+  .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+    margin-top: 2rem;
+    max-width: 800px;
   }
 
   .project-card {
     background: #fff;
     border: 1px solid #e5e9f0;
     border-radius: 12px;
-    padding: 1.5rem;
+    padding: 1.25rem 1.5rem;
     text-decoration: none;
     color: inherit;
     transition: border-color 0.15s, box-shadow 0.15s;
@@ -50,68 +85,66 @@
     border-color: #378ADD;
     box-shadow: 0 2px 12px rgba(55,138,221,0.1);
   }
-  .project-icon { font-size: 2.2rem; margin-bottom: 0.75rem; }
-  .project-title { font-size: 1.1rem; font-weight: 500; margin-bottom: 0.4rem; }
-  .project-desc { font-size: 0.9rem; color: #666; line-height: 1.6; }
-  .project-tag {
+  .project-card.disabled { opacity: 0.5; pointer-events: none; }
+  .card-icon { font-size: 1.8rem; margin-bottom: 0.6rem; }
+  .card-title { font-size: 1rem; font-weight: 500; margin-bottom: 0.3rem; }
+  .card-desc { font-size: 0.875rem; color: #666; line-height: 1.6; }
+  .card-tag {
     display: inline-block;
-    margin-top: 0.75rem;
-    font-size: 0.75rem;
+    margin-top: 0.6rem;
+    font-size: 0.72rem;
     background: #E6F1FB;
     color: #0C447C;
-    padding: 3px 10px;
+    padding: 2px 9px;
     border-radius: 20px;
   }
 
-  .coming-soon {
-    opacity: 0.55;
-    cursor: default;
-  }
-  .coming-soon:hover {
-    border-color: #e5e9f0;
-    box-shadow: none;
-  }
-
-  footer {
-    text-align: center;
-    padding: 2rem;
-    font-size: 0.8rem;
-    color: #bbb;
+  @media (max-width: 600px) {
+    body { flex-direction: column; }
+    nav { width: 100%; min-height: auto; padding: 1rem 0; }
+    .nav-item { display: inline-block; border-left: none; border-bottom: 2px solid transparent; padding: 0.5rem 1rem; }
+    .nav-item.active { border-bottom-color: #fff; border-left: none; }
   }
 </style>
 </head>
 <body>
 
-<header>
-  <h1>🌿 Kolonilotten</h1>
-  <p>Linköping – projekt och dagböcker</p>
-</header>
-
-<div class="intro">
-  Välkommen till min kolonilott i Linköping. Här samlar jag alla projekt – byggen, odling och annat som händer på lotten. Klicka på ett projekt för att följa med.
-</div>
-
-<div class="projects">
-
-  <a class="project-card" href="https://kolonilott95.github.io/Kolonistugan/">
-    <div class="project-icon">🏡</div>
-    <div class="project-title">Kolonistugan 2026</div>
-    <div class="project-desc">Nybyggnation av kolonilottstuga på 14,5 kvm. Följ bygget från grunden till färdigt hus.</div>
-    <span class="project-tag">Pågår 2026</span>
-  </a>
-
-  <div class="project-card coming-soon">
-    <div class="project-icon">🌱</div>
-    <div class="project-title">Kommande projekt</div>
-    <div class="project-desc">Fler projekt läggs till här framöver.</div>
-    <span class="project-tag">Snart</span>
+<nav>
+  <div class="nav-logo">
+    <h1>🌿 Kolonilotten</h1>
+    <p>Linköping</p>
   </div>
 
-</div>
+  <div class="nav-section">Projekt</div>
+  <a class="nav-item active" href="https://kolonilott95.github.io/Kolonistugan/">
+    <span class="icon">🏡</span>Kolonistugan 2026
+  </a>
+  <a class="nav-item disabled" href="#">
+    <span class="icon">🌿</span>Trädgård
+  </a>
+</nav>
 
-<footer>
-  Kolonilotten Linköping
-</footer>
+<main>
+  <div class="welcome">
+    <h2>Välkommen till kolonilotten</h2>
+    <p>Här samlar jag alla projekt från min kolonilott i Linköping. Välj ett projekt i menyn till vänster för att följa med.</p>
+  </div>
+
+  <div class="project-grid">
+    <a class="project-card" href="https://kolonilott95.github.io/Kolonistugan/">
+      <div class="card-icon">🏡</div>
+      <div class="card-title">Kolonistugan 2026</div>
+      <div class="card-desc">Nybyggnation av kolonilottstuga på 14,5 kvm. Följ bygget från grunden till färdigt hus.</div>
+      <span class="card-tag">Pågår nu</span>
+    </a>
+    <div class="project-card disabled">
+      <div class="card-icon">🌿</div>
+      <div class="card-title">Trädgård</div>
+      <div class="card-desc">Kommande dokumentation av trädgårdsarbetet på lotten.</div>
+      <span class="card-tag">Kommer</span>
+    </div>
+  </div>
+</main>
 
 </body>
 </html>
